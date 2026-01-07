@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'https://esm.sh/react@19.0.0';
 import { GameState, ApiResponse } from './types';
 import { testCommunication, getGeminiHint } from './services/geminiService';
 import Modal from './components/Modal';
@@ -161,7 +161,6 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* API Test Modal */}
       <Modal 
         isOpen={isTestModalOpen} 
         onClose={() => setIsTestModalOpen(false)} 

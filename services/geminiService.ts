@@ -1,5 +1,5 @@
 
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "https://esm.sh/@google/genai@1.34.0";
 import { ApiResponse } from "../types";
 
 export const testCommunication = async (): Promise<ApiResponse> => {
