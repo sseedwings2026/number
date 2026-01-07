@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Number Guessing Game",
+  "description": "A 1-100 number guessing game where Gemini provides witty hints and encouragement. Includes a communication test feature to verify API connectivity.",
+  "requestFramePermissions": []
+}
