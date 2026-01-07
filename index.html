@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,8 +20,8 @@
             min-height: 100vh;
         }
     </style>
-    <!-- Vercel 등 정적 호스팅 환경에서 process.env 참조 에러 방지 -->
     <script>
+      // 브라우저에서 process.env 참조 시 발생하는 에러 방지
       window.process = window.process || { env: {} };
     </script>
 <script type="importmap">
@@ -35,5 +34,6 @@
 </head>
 <body>
     <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
