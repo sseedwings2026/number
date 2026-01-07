@@ -17,11 +17,21 @@
             margin: 0;
             padding: 0;
         }
-        /* Ensure the root takes full height to prevent black background issues if content is short */
         #root {
             min-height: 100vh;
         }
     </style>
+    <!-- Vercel 등 정적 호스팅 환경에서 process.env 참조 에러 방지 -->
+    <script>
+      window.process = window.process || { env: {} };
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
 </head>
 <body>
     <div id="root"></div>
