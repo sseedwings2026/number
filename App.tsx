@@ -1,8 +1,8 @@
 
 import React, { useState, useCallback } from 'https://esm.sh/react@19.0.0';
-import { GameState, ApiResponse } from './types';
-import { testCommunication, getGeminiHint } from './services/geminiService';
-import Modal from './components/Modal';
+import { GameState, ApiResponse } from './types.ts';
+import { testCommunication, getGeminiHint } from './services/geminiService.ts';
+import Modal from './components/Modal.tsx';
 
 const App: React.FC = () => {
   const [game, setGame] = useState<GameState>({
@@ -73,14 +73,18 @@ const App: React.FC = () => {
   const runApiTest = async () => {
     setIsTesting(true);
     setTestResult(null);
-    const result = await testCommunication();
-    setTestResult(result);
-    setIsTesting(false);
+    try {
+      const result = await testCommunication();
+      setTestResult(result);
+    } catch (err) {
+      setTestResult({ success: false, message: "테스트 중 치명적 오류가 발생했습니다." });
+    } finally {
+      setIsTesting(false);
+    }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 sm:p-12">
-      {/* Header */}
       <div className="w-full max-w-lg mb-8 text-center">
         <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">
           Gemini 숫자 스무고개
@@ -88,7 +92,6 @@ const App: React.FC = () => {
         <p className="text-slate-400">인공지능 Gemini가 당신의 추측을 도와줍니다.</p>
       </div>
 
-      {/* Main Game Card */}
       <div className="w-full max-w-lg bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-3xl shadow-xl overflow-hidden">
         <div className="p-8">
           <div className="mb-6 text-center">
@@ -168,7 +171,7 @@ const App: React.FC = () => {
       >
         <div className="space-y-6">
           <p className="text-slate-300 text-sm leading-relaxed">
-            Gemini API와의 연결 상태를 확인합니다. 이 테스트는 주입된 <code className="bg-slate-900 px-1 rounded text-blue-400">process.env.API_KEY</code>를 사용합니다.
+            Gemini API와의 연결 상태를 확인합니다. 이 테스트는 환경 변수로 제공된 API 키를 사용합니다.
           </p>
           
           <button
